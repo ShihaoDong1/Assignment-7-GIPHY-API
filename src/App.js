@@ -1,17 +1,17 @@
 import React from 'react';
-import Axios from 'axios';
+// import Axios from 'axios';
 import './App.css';
 import SearchField from './components/SearchField';
-import GifCard from './components/GifCard';
+// import GifCard from './components/GifCard';
 
 function App() {
   return (
+    <div>
     <SearchField />
 
-    <GifCard />
+    {/* <GifCard /> */}
 
-    
-
+    </div>
   );
 }
 
