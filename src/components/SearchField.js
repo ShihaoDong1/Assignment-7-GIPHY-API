@@ -57,6 +57,24 @@ class SearchField extends Component {
   }
 
   render() {
+    let display;
+    if (!this.state.searchTerm) {
+      display = <p>Loading...</p>;
+    } else {
+      display = (
+        <>
+          <img
+            src={this.state.gifUrl}
+            alt={this.state.searchTerm}
+          />
+          <ul>
+            <li>{this.state.searchTerm} </li>
+          </ul>
+        </>
+      );
+    }
+
+
     return (
       <div>
 
@@ -64,7 +82,7 @@ class SearchField extends Component {
           <input type="text" placeholder="Regular Search" onChange={this.handleChange} />
           <button onClick={this.handleRegularSearch}>Search</button>
         </p>
-
+        
         <p>
           <input type="text" placeholder="Trending Search" onChange={this.handleChange} />
           <button onClick={this.handleTrendingSearch}>Trending Search</button>
@@ -74,7 +92,7 @@ class SearchField extends Component {
           <input type="text" placeholder="Random Search" onChange={this.handleChange} />
           <button onClick={this.handleRandomSearch}>Random Search</button>
         </p>
-
+        {display}
       </div>
 
     )
