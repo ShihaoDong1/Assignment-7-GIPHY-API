@@ -96,6 +96,7 @@ class SearchField extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     // console.log(typeof this.state.data.data)
     // for(let i = 0; i<gifUrl.length; i++){
     //   let imgList = this.state.gifUrl[i];
@@ -123,6 +124,26 @@ class SearchField extends Component {
     //   //  </div>)
     // });
 
+=======
+    let display;
+    if (!this.state.searchTerm) {
+      display = <p>Loading...</p>;
+    } else {
+      display = (
+        <>
+          <img
+            src={this.state.gifUrl}
+            alt={this.state.searchTerm}
+          />
+          <ul>
+            <li>{this.state.searchTerm} </li>
+          </ul>
+        </>
+      );
+    }
+
+
+>>>>>>> 99b3e0915e0056b036eed2718fccb0ab68a0d249
     return (
       <div>
         <h1>Gifphy Assignment: </h1>
@@ -131,7 +152,7 @@ class SearchField extends Component {
           <input type="text" placeholder="Regular Search" onChange={this.handleChange} />
           <button onClick={this.handleRegularSearch}>Search</button>
         </p>
-
+        
         <p>
           {/* <input type="text" placeholder="Trending Search" onChange={this.handleChange} /> */}
           <button onClick={this.handleTrendingSearch}>Trending Search</button>
@@ -141,7 +162,11 @@ class SearchField extends Component {
           {/* <input type="text" placeholder="Random Search" onChange={this.handleChange} /> */}
           <button onClick={this.handleRandomSearch}>Random Search</button>
         </p>
+<<<<<<< HEAD
         <p>{imgList}</p> 
+=======
+        {display}
+>>>>>>> 99b3e0915e0056b036eed2718fccb0ab68a0d249
       </div>
 
     )
