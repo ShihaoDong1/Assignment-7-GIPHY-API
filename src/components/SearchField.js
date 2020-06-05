@@ -39,7 +39,7 @@ class SearchField extends Component {
 
         // assign the variables we need
         this.setState({ gifUrl: data.data[randomGif].images.original.url})
-        console.log(this.state.gifUrl);
+        console.log("gifUrl: ", this.state.gifUrl);
 
       })
       .catch((err) => console.log(err));
