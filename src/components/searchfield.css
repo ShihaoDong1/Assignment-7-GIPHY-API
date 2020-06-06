@@ -7,6 +7,7 @@
     left: 0; 
     height: 100%; 
     width: 100%;
+    background-color: black;
 }
 
 .container_class header {
@@ -25,14 +26,50 @@
     100%{   color: white;    }
 }
 
+.container_body {
+    background-color: black;
+}
+
 .phrase_container {
     display: inline-block;
 }
 
 input[type=text] {
-    padding: 2px;
+    padding: 6px;
     text-align: center;
     margin-top: 15px;
     margin-bottom: 10px;
-    width: 200px;
+    width: 220px;
+}
+
+.footer {
+    color: black;
+    text-align: center;
+    background-color: white;
+    padding: 5px;
+    font-size: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.search_btn {
+    padding: 3px;
+    width: 100px;
+}
+
+.trending_btn {
+    background-color: blue;
+    color: white;
+    padding: 5px;
+}
+
+.random_btn {
+    background-color: red;
+    color: white;
+    padding: 5px;
 }

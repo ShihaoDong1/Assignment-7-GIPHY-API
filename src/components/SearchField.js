@@ -27,7 +27,7 @@ class SearchField extends Component {
 
     // request info from API with a constraint of 10 results
     axios
-      .get('http://api.giphy.com/v1/gifs/search?q=' + this.state.searchTerm + this.state.API_Key + "&limit=10", {
+      .get('http://api.giphy.com/v1/gifs/search?q=' + this.state.searchTerm + this.state.API_Key + "&limit=20", {
           params: {  //_limit: 10
           }
         } 
@@ -60,7 +60,7 @@ class SearchField extends Component {
     const trendingLink = 'http://api.giphy.com/v1/gifs/trending?' + this.state.API_Key;
     console.log(trendingLink);
     axios
-      .get(trendingLink + "&limit=10", {
+      .get(trendingLink + "&limit=20", {
           params: {  //_limit: 10
           }
         } 
@@ -80,11 +80,7 @@ class SearchField extends Component {
   handleRandomSearch = () => {
     const randomchLink = 'http://api.giphy.com/v1/gifs/random?' + this.state.API_Key;
     axios
-    .get(randomchLink + "&limit=10", {
-        params: {  //_limit: 10
-        }
-      } 
-    )
+    .get(randomchLink)
     .then((response) => {
       const data = response.data;
       this.setState({ arrObj: false});
@@ -111,24 +107,35 @@ class SearchField extends Component {
 
     return (
       <div className="container_class">
+
         <header>Gifphy Assignment</header>
-        
-        <p className = "phrase_container">
 
-          <input className="search_bar" type="text" placeholder="Enter a phrase" onChange={this.handleChange} />
-          <br></br>
-          <button className="search_btn" onClick={this.handleRegularSearch}>Search</button>
+        <body className="container_body">
+          <p className = "phrase_container">
+            
+            <input className="search_bar" type="text" placeholder="Enter a phrase" onChange={this.handleChange} />
+            <br></br>
+            <button className="search_btn" onClick={this.handleRegularSearch}>Search</button>
 
-        </p>
+            </p>
 
-        <p className="trend_random_search">
+            <p className="trend_random_search">
 
-          <button className="trending_btn" onClick={this.handleTrendingSearch}>Trending Search</button>
-          <button className="random_btn" onClick={this.handleRandomSearch}>Random Search</button>
+            <button className="trending_btn" onClick={this.handleTrendingSearch}>Trending Search</button>
+            <button className="random_btn" onClick={this.handleRandomSearch}>Random Search</button>
 
-        </p>
+          </p>
 
-        <p>{imgList}</p> 
+          <p>{imgList}</p>
+
+        </body>
+
+        <footer className="footer">
+          <p className="group_name">
+            Group 6: Shihao Dong, ChunHao Zheng, Yoseph Ahmed
+          </p>
+          <p1 className="repo"><a href="https://github.com/ShihaoDong1/Assignment-7-GIPHY-API">GitHub Repository</a></p1>
+        </footer> 
       </div>
 
     )
