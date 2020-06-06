@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './searchfield.css';
 
 class SearchField extends Component {
   constructor(props) {
@@ -38,6 +40,7 @@ class SearchField extends Component {
         this.setState({ data: data.data}); // transforming data into array
         console.log(data)
         console.log(typeof data)
+
         // grabs a random integer from 0 to 9 so we can pick a random gif object from our 10 results
         // let randomGif = Math.floor(Math.random() * 10);
         // console.log(randomGif);
@@ -68,7 +71,6 @@ class SearchField extends Component {
         this.setState({ data: data.data});
         // console.log(data)
         // console.log(typeof data)
-      
       })
       .catch((err) => console.log(err));
   
@@ -76,7 +78,6 @@ class SearchField extends Component {
 
   handleRandomSearch = () => {
     const randomchLink = 'http://api.giphy.com/v1/gifs/random?' + this.state.API_Key;
-    //  console.log(randomchLink)
     axios
     .get(randomchLink + "&limit=10", {
         params: {  //_limit: 10
@@ -84,22 +85,15 @@ class SearchField extends Component {
       } 
     )
     .then((response) => {
-      // data is an array containing objects
       const data = response.data;
       this.setState({ arrObj: false});
       this.setState({ randomGif: data.data.images.original.url});
-      // console.log(this.state.randomGif)
-      // console.log(typeof this.state.randomGif)
     })
     .catch((err) => console.log(err));
 
   }
 
   render() {
-    // console.log(typeof this.state.data.data)
-    // for(let i = 0; i<gifUrl.length; i++){
-    //   let imgList = this.state.gifUrl[i];
-    // }
     let imgList;
     if(this.state.arrObj){
       imgList = this.state.data.map((x) =>(
@@ -109,23 +103,13 @@ class SearchField extends Component {
      ))
      }
       else  { 
-        // let x = this.state.randomGif;
         console.log(this.state.randomGif)
         imgList = <img src = {this.state.randomGif} alt = "Image loading" />
       }
-     
-
-
-    // let imgList = this.state.data.forEach((x) => {
-    //    return  <img src = {x.images.original.url} alt = {this.state.searchTerm} />
-    //    //(<div className = 'url' key = {x}>
-     
-    //   //  </div>)
-    // });
 
     return (
-      <div>
-        <h1>Gifphy Assignment: </h1>
+      <div className="container_class">
+        <header>Gifphy Assignment</header>
         
         <p>
           <input type="text" placeholder="Regular Search" onChange={this.handleChange} />

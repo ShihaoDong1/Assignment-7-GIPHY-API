@@ -1,0 +1,19 @@
+.container_class {
+    border: solid black 2px;
+}
+
+.container_class header {
+    color: red;
+    text-align: center;
+    background-color: black;
+    padding: 25px;
+    font-size: 35px;
+    animation: blinkingText 1.2s infinite;
+} /* Cool blinking text ;) */
+@keyframes blinkingText{
+    0%{     color: white;    }
+    49%{    color: white; }
+    60%{    color: red; }
+    99%{    color: red;  }
+    100%{   color: white;    }
+}
