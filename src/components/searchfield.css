@@ -1,5 +1,12 @@
 .container_class {
     border: solid black 2px;
+    text-align: center;
+    display: inline-block;
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    height: 100%; 
+    width: 100%;
 }
 
 .container_class header {
@@ -16,4 +23,16 @@
     60%{    color: red; }
     99%{    color: red;  }
     100%{   color: white;    }
+}
+
+.phrase_container {
+    display: inline-block;
+}
+
+input[type=text] {
+    padding: 2px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 200px;
 }

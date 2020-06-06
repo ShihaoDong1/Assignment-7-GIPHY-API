@@ -13,6 +13,7 @@ class SearchField extends Component {
       data: [],
       arrObj: false,
       randomGif: null,
+      randomClicked: false,
     }
   }
 
@@ -88,6 +89,7 @@ class SearchField extends Component {
       const data = response.data;
       this.setState({ arrObj: false});
       this.setState({ randomGif: data.data.images.original.url});
+      this.setState({ randomClicked: true });
     })
     .catch((err) => console.log(err));
 
@@ -97,34 +99,35 @@ class SearchField extends Component {
     let imgList;
     if(this.state.arrObj){
       imgList = this.state.data.map((x) =>(
-      <div className = 'url' key = {x}>
-        <img src = {x.images.original.url} alt = {this.state.searchTerm}/>
-      </div>
+      // <div className = 'url' key = {x}>
+        <img src = {x.images.original.url} alt = {this.state.searchTerm} width="500" height="500"/>
+      // </div>
      ))
      }
-      else  { 
+      else if (this.state.arrObj !== true && this.state.randomClicked) { 
         console.log(this.state.randomGif)
-        imgList = <img src = {this.state.randomGif} alt = "Image loading" />
+        imgList = <img src = {this.state.randomGif} width="500" height="500"/>
       }
 
     return (
       <div className="container_class">
         <header>Gifphy Assignment</header>
         
-        <p>
-          <input type="text" placeholder="Regular Search" onChange={this.handleChange} />
-          <button onClick={this.handleRegularSearch}>Search</button>
-        </p>
-        
-        <p>
-          {/* <input type="text" placeholder="Trending Search" onChange={this.handleChange} /> */}
-          <button onClick={this.handleTrendingSearch}>Trending Search</button>
+        <p className = "phrase_container">
+
+          <input className="search_bar" type="text" placeholder="Enter a phrase" onChange={this.handleChange} />
+          <br></br>
+          <button className="search_btn" onClick={this.handleRegularSearch}>Search</button>
+
         </p>
 
-        <p>
-          {/* <input type="text" placeholder="Random Search" onChange={this.handleChange} /> */}
-          <button onClick={this.handleRandomSearch}>Random Search</button>
+        <p className="trend_random_search">
+
+          <button className="trending_btn" onClick={this.handleTrendingSearch}>Trending Search</button>
+          <button className="random_btn" onClick={this.handleRandomSearch}>Random Search</button>
+
         </p>
+
         <p>{imgList}</p> 
       </div>
 
